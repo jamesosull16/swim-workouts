@@ -1,0 +1,61 @@
+<h1>Search for a Workout</h1>
+
+<form id="search-form">
+
+    <div id="form-group">
+        <label for="wu">WU Length:</label>
+        <input type="text" id="wu" name="warmup" value="{{this.wu}}">
+    </div>
+
+    <button type="submit">Search</button>
+</form>
+
+<h1>Swim Workouts</h1>
+
+<p>Select the workout you would like to do</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+    {{#each workouts}}
+    <li>
+        <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
+        <p><span class="label">Main Set:</span> {{this.ms}}</p>
+        <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
+
+        <button data-id="{{this.id}}" class="selectWO">Do This One!</button>
+
+    </li>
+    {{/each}}
+</ul>
+
+<h2>Add a Workout</h2>
+
+<form id="create-form">
+
+    <div class="form-group">
+        <label for="dist">Total Distance:</label>
+        <input type="text" id="dist" name="distance">
+    </div>
+
+    <div class="form-group">
+        <label for="cat">Category:</label>
+        <input type="text" id="cat" name="category">
+    </div>
+
+    <div class="form-group">
+        <label for="wu">Warm-Up:</label>
+        <textarea id="wu" name="warmup"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="ms">Main Set:</label>
+        <textarea id="ms" name="mainset"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="cd">Cool-Down:</label>
+        <textarea id="cd" name="cooldown"></textarea>
+    </div>
+
+    <button type="submit">Add Workout</button>
+</form>

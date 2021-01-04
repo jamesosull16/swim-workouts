@@ -3,6 +3,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     console.info("DOM Loaded");
   }
 
+  //selecting a workout to complete
+  const thisOneBtn = document.querySelectorAll(".selectWO");
+  thisOneBtn.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-id");
+
+      fetch(`api/workouts/${id}`, {
+        method: "PUT",
+      });
+    });
+  });
+
   //searching for workout
   const searchBtn = document.getElementById("search-form");
 
@@ -39,8 +51,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       e.preventDefault();
 
       const newWorkout = {
-        dist: document.getElementById("dist").value.trim(),
-        cat: document.getElementById("cat").value.trim(),
+        distance: document.getElementById("dist").value.trim(),
+        category: document.getElementById("cat").value.trim(),
         wu: document.getElementById("wu").value.trim(),
         ms: document.getElementById("ms").value.trim(),
         cd: document.getElementById("cd").value.trim(),

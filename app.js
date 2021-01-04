@@ -40,6 +40,7 @@ app.get("/", (req, res) => {
   });
 });
 
+//selecting the workout to complete
 app.get("/:id", (req, res) => {
   connection.query(
     "SELECT * FROM workouts WHERE id = ?",
@@ -54,10 +55,11 @@ app.get("/:id", (req, res) => {
   );
 });
 
+//adding a workout
 app.post("/api/workouts", (req, res) => {
   connection.query(
-    "INSERT INTO workouts (dist, cat, wu, ms, cd) VALUES (?, ?, ?, ?, ?)",
-    [req.body.dist, req.body.cat, req.body.wu, req.body.ms, req.body.cd],
+    "INSERT INTO workouts (distance, category, wu, ms, cd) VALUES (?, ?, ?, ?, ?)",
+    [req.body.distance, req.body.category, req.body.wu, req.body.ms, req.body.cd],
     (err, result) => {
       if (err) {
         return res.status(500).end();

@@ -1,61 +1,75 @@
-<h1>Search for a Workout</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Search for a Workout</h2>
+            <form id="search-form">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Category Search</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="search" value="{{this.body}}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Search</button>
+            </form>
+        </div>
 
-<form id="search-form">
+        <div class="col-lg-6">
+            <h2>Add a Workout</h2>
+            <form id="create-form">
+                <div class="row mb-3">
+                    <label for="dist" class="col-sm-2 col-form-label">Total Distance</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dist" name="distance">
+                    </div>
+                </div>
 
-    <div id="form-group">
-        <label for="wu">WU Length:</label>
-        <input type="text" id="wu" name="warmup" value="{{this.wu}}">
+                <div class="row mb-3">
+                    <label for="cat" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="cat" name="category">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="ms" class="col-sm-2 col-form-label">Warm-Up</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="wu" name="warmup"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="ms" class="col-sm-2 col-form-label">Main Set</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="ms" name="mainset"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="cd" class="col-sm-2 col-form-label">Cool-Down</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="cd" name="cooldown"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Add Workout</button>
+            </form>
+        </div>
     </div>
+</div>
 
-    <button type="submit">Search</button>
-</form>
+<h1>Workouts</h1>
 
-<h1>Swim Workouts</h1>
-
-<p>Select the workout you would like to do</p>
+<h3>Select the workout you would like to do</h3>
 
 <!-- Pass in data from server.js -->
-<ul>
-    {{#each workouts}}
-    <li>
-        <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
-        <p><span class="label">Main Set:</span> {{this.ms}}</p>
-        <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
 
-        <button data-id="{{this.id}}" class="selectWO">Do This One!</button>
+{{#each workouts}}
+<div class="card-body">
+    <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
+    <p><span class="label">Main Set:</span> {{this.ms}}</p>
+    <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
 
-    </li>
-    {{/each}}
-</ul>
+    <button data-id="{{this.id}}" class="selectWO">Do This One!</button>
+</div>
 
-<h2>Add a Workout</h2>
-
-<form id="create-form">
-
-    <div class="form-group">
-        <label for="dist">Total Distance:</label>
-        <input type="text" id="dist" name="distance">
-    </div>
-
-    <div class="form-group">
-        <label for="cat">Category:</label>
-        <input type="text" id="cat" name="category">
-    </div>
-
-    <div class="form-group">
-        <label for="wu">Warm-Up:</label>
-        <textarea id="wu" name="warmup"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="ms">Main Set:</label>
-        <textarea id="ms" name="mainset"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="cd">Cool-Down:</label>
-        <textarea id="cd" name="cooldown"></textarea>
-    </div>
-
-    <button type="submit">Add Workout</button>
-</form>
+{{/each}}

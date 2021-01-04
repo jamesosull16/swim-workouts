@@ -1,19 +1,26 @@
-li {
-    padding: 5px;
-    margin: 5px;
-    background: #faebd7;
-  }
-  
-  .label {
-    font-weight: bold;
-  }
-  
-  .update-form {
-    padding: 5px;
-    margin: 5px;
-    background: aqua;
-  }
-  
-  .form-group {
-    margin-bottom: 5px;
-  }
+.card-body {
+  padding: 5px;
+  margin: 5px;
+  background: #93f0f7;
+}
+
+label {
+  font-weight: bold;
+}
+p .label {
+  font-weight: bold;
+}
+
+.container-fluid {
+  padding: 5px;
+  margin: 5px;
+  background: rgb(238, 222, 135);
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+#search-form {
+  margin-bottom: 5px;
+}

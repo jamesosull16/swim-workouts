@@ -1,11 +1,10 @@
 <h1>Swim Workout for the Day</h1>
 
-<ul>
-    {{#each workouts}}
-    <li>
-        <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
-        <p><span class="label">Main Set:</span> {{this.ms}}</p>
-        <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
-    </li>
-    {{/each}}
-</ul>
+{{#each workouts}}
+<div class="card-body">
+    <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
+    <p><span class="label">Main Set:</span> {{this.ms}}</p>
+    <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
+</div>
+
+{{/each}}

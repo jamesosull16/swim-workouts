@@ -1,7 +1,7 @@
 .card-body {
   padding: 5px;
   margin: 5px;
-  background: #93f0f7;
+  background: #19a1b0;
 }
 
 label {
@@ -14,7 +14,7 @@ p .label {
 .container-fluid {
   padding: 5px;
   margin: 5px;
-  background: rgb(238, 222, 135);
+  align-content: center;
 }
 
 .form-group {

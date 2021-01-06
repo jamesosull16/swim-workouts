@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   //adding a new workout
-  const addWOBtn = document.getElementById("create-form");
+  const addWOBtn = document.getElementById("addWO");
 
   if (addWOBtn) {
     addWOBtn.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      console.log("Clicked");
       const newWorkout = {
         distance: document.getElementById("dist").value.trim(),
         category: document.getElementById("cat").value.trim(),
@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
         body: JSON.stringify(newWorkout),
       }).then((response) => {
+        //clearing the forms
         document.getElementsByName("mainset")[0].value = "";
         console.log("New Workout Added");
         location.reload();

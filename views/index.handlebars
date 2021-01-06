@@ -1,75 +1,180 @@
-<div class="container-fluid">
+<main class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
-            <h2>Search for a Workout</h2>
-            <form id="search-form">
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Category Search</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="search" value="{{this.body}}">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal"
+                data-bs-newWorkout="@add">Add Workout</button>
+
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#searchModal"
+                data-bs-search="@search">Search Workouts</button>
+        </div>
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">New Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="create-form">
+                            <div class="row mb-3">
+                                <label for="dist" class="col-sm-2 col-form-label">Total Distance</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="dist" name="distance">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="cat" class="col-sm-2 col-form-label">Category</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cat" name="category">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="ms" class="col-sm-2 col-form-label">Warm-Up</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" id="wu" name="warmup" rows="4" cols="40"
+                                        wrap="hard"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="ms" class="col-sm-2 col-form-label">Main Set</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" id="ms" name="mainset" rows="8" cols="40"
+                                        wrap="hard"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="cd" class="col-sm-2 col-form-label">Cool-Down</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" id="cd" name="cooldown" rows="4"
+                                        cols="40" wrap="hard"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id='addWO' class="btn btn-primary">Add Workout</button>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Search</button>
-            </form>
+            </div>
         </div>
 
-        <div class="col-lg-6">
-            <h2>Add a Workout</h2>
-            <form id="create-form">
-                <div class="row mb-3">
-                    <label for="dist" class="col-sm-2 col-form-label">Total Distance</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="dist" name="distance">
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel">Search Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="search-form">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Category Search</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="search" value="{{this.body}}">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </div>
-
-                <div class="row mb-3">
-                    <label for="cat" class="col-sm-2 col-form-label">Category</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="cat" name="category">
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="ms" class="col-sm-2 col-form-label">Warm-Up</label>
-                    <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="wu" name="warmup"></textarea>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="ms" class="col-sm-2 col-form-label">Main Set</label>
-                    <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="ms" name="mainset"></textarea>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="cd" class="col-sm-2 col-form-label">Cool-Down</label>
-                    <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="cd" name="cooldown"></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-success">Add Workout</button>
-            </form>
+            </div>
         </div>
+
     </div>
-</div>
 
-<h1>Workouts</h1>
 
-<h3>Select the workout you would like to do</h3>
 
-<!-- Pass in data from server.js -->
 
-{{#each workouts}}
-<div class="card-body">
-    <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
-    <p><span class="label">Main Set:</span> {{this.ms}}</p>
-    <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
+    {{!-- <main class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Add a Workout</h2>
+                <form id="create-form">
+                    <div class="row mb-3">
+                        <label for="dist" class="col-sm-2 col-form-label">Total Distance</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="dist" name="distance">
+                        </div>
+                    </div>
 
-    <button data-id="{{this.id}}" class="selectWO">Do This One!</button>
-</div>
+                    <div class="row mb-3">
+                        <label for="cat" class="col-sm-2 col-form-label">Category</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="cat" name="category">
+                        </div>
+                    </div>
 
-{{/each}}
+                    <div class="row mb-3">
+                        <label for="ms" class="col-sm-2 col-form-label">Warm-Up</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="wu" name="warmup" rows="4" cols="40"
+                                wrap="hard"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="ms" class="col-sm-2 col-form-label">Main Set</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="ms" name="mainset" rows="8" cols="40"
+                                wrap="hard"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="cd" class="col-sm-2 col-form-label">Cool-Down</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="cd" name="cooldown" rows="4" cols="40"
+                                wrap="hard"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Add Workout</button>
+                </form>
+            </div>
+
+            <div class="col-sm-6">
+                <h2>Search Workouts</h2>
+                <form id="search-form">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Category Search</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="search" value="{{this.body}}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+            </div>
+
+
+        </div>
+    </main> --}}
+
+    <br>
+
+    <h1>Workouts</h1>
+
+    <h3>Select the workout you would like to do</h3>
+
+    <!-- Pass in data from server.js -->
+
+    {{#each workouts}}
+    <div class="card-body">
+        <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
+        <p><span class="label">Main Set:</span> {{this.ms}}</p>
+        <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
+
+        <button data-id="{{this.id}}" class="selectWO btn btn-dark">Do This One!</button>
+    </div>
+
+
+    {{/each}}
+</main>

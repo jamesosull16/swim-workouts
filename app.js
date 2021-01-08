@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const path = require("path");
-const dotenv = require("dotenv").config();
 
 const app = express();
 
@@ -17,13 +17,18 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.use(express.static(path.join(__dirname, "/")));
 app.set("view engine", "handlebars");
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "Blessing@16",
-  database: "swim_workoutsDB",
-});
+let connection;
+if (process.env.JAWSDB_URL) {
+connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+  connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: 3306,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: "swim_workoutsDB",
+  });
+}
 connection.connect((err) => {
   if (err) {
     console.error(`Error Connecting: ${err.stack}`);

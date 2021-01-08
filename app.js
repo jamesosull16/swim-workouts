@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const path = require("path");
+const dotenv = require("dotenv").config();
 
 const app = express();
 
@@ -59,7 +60,13 @@ app.get("/:id", (req, res) => {
 app.post("/api/workouts", (req, res) => {
   connection.query(
     "INSERT INTO workouts (distance, category, wu, ms, cd) VALUES (?, ?, ?, ?, ?)",
-    [req.body.distance, req.body.category, req.body.wu, req.body.ms, req.body.cd],
+    [
+      req.body.distance,
+      req.body.category,
+      req.body.wu,
+      req.body.ms,
+      req.body.cd,
+    ],
     (err, result) => {
       if (err) {
         return res.status(500).end();

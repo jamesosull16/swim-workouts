@@ -1,21 +1,16 @@
-<h1>Search Results:</h1>
-
-<ul>
+<main contianer-fluid>
+    <h1>Search Results:</h1>
     {{#each workouts}}
-    <li>
+    <div class="card-body">
         <p><span class="label">Warm-Up:</span> {{this.wu}}</p>
         <p><span class="label">Main Set:</span> {{this.ms}}</p>
         <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
-    </li>
-    {{/each}}
-</ul>
 
-<form id="search-form">
-
-    <div id="form-group">
-        <label for="wu">WU Length:</label>
-        <input type="text" id="wu" name="warmup" value="{{this.wu}}">
+        <button data-id="{{this.id}}" class="selectWO btn btn-dark">Do This One!</button>
+        <button data-id="{{this.id}}" class="selectWO btn btn-danger">Delete</button>
     </div>
 
-    <button type="submit">Search</button>
-</form>
+
+    {{/each}}
+
+</main>

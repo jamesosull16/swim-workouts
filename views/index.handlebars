@@ -75,7 +75,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Category Search</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="search" value="{{this.body}}">
+                                    <input type="text" class="form-control" id="searchCat" name="searchInput">
                                 </div>
                             </div>
 
@@ -83,80 +83,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" id="searchBtn" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-
-
-
-
-    {{!-- <main class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6">
-                <h2>Add a Workout</h2>
-                <form id="create-form">
-                    <div class="row mb-3">
-                        <label for="dist" class="col-sm-2 col-form-label">Total Distance</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="dist" name="distance">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="cat" class="col-sm-2 col-form-label">Category</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="cat" name="category">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="ms" class="col-sm-2 col-form-label">Warm-Up</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="wu" name="warmup" rows="4" cols="40"
-                                wrap="hard"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="ms" class="col-sm-2 col-form-label">Main Set</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="ms" name="mainset" rows="8" cols="40"
-                                wrap="hard"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="cd" class="col-sm-2 col-form-label">Cool-Down</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="cd" name="cooldown" rows="4" cols="40"
-                                wrap="hard"></textarea>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-success">Add Workout</button>
-                </form>
-            </div>
-
-            <div class="col-sm-6">
-                <h2>Search Workouts</h2>
-                <form id="search-form">
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Category Search</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="search" value="{{this.body}}">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Search</button>
-                </form>
-            </div>
-
-
-        </div>
-    </main> --}}
 
     <br>
 
@@ -172,7 +105,8 @@
         <p><span class="label">Main Set:</span> {{this.ms}}</p>
         <p><span class="label">Cool-Down:</span> {{this.cd}}</p>
 
-        <button data-id="{{this.id}}" class="selectWO btn btn-dark">Do This One!</button>
+        <button data-id="{{this.id}}" id="thisOneBtn" class="selectWO btn btn-dark">Do This One!</button>
+        <button data-id="{{this.id}}" id="deleteBtn" class="deleteWO btn btn-danger">Delete</button>
     </div>
 
 

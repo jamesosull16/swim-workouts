@@ -19,7 +19,7 @@ app.set("view engine", "handlebars");
 
 let connection;
 if (process.env.JAWSDB_URL) {
-connection = mysql.createConnection(process.env.JAWSDB_URL)
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
   connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -37,6 +37,7 @@ connection.connect((err) => {
   console.log(`Connected as ID ${connection.threadId}`);
 });
 
+//root route
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM workouts;", (err, data) => {
     if (err) {
@@ -47,7 +48,7 @@ app.get("/", (req, res) => {
 });
 
 //selecting the workout to complete
-app.get("/:id", (req, res) => {
+app.get("/:id?", (req, res) => {
   connection.query(
     "SELECT * FROM workouts WHERE id = ?",
     [req.params.id],
@@ -73,10 +74,48 @@ app.post("/api/workouts", (req, res) => {
       req.body.cd,
     ],
     (err, result) => {
+      console.log(result);
+      console.log(err);
       if (err) {
         return res.status(500).end();
       }
+      console.log({ id: result.insertId });
       res.json({ id: result.insertId });
+    }
+  );
+});
+
+//searching a workout by category
+app.get("/api/:category", (req, res) => {
+  connection.query(
+    "SELECT * FROM workouts WHERE category = ?",
+    [req.params.category],
+    (err, result) => {
+      console.log(result);
+      console.log(err);
+      if (err) {
+        return res.status(500).end();
+      }
+      res.render("searched-workout", result[0]);
+    }
+  );
+});
+
+//delete a workout
+app.delete("/api/workouts/:id", (req, res) => {
+  connection.query(
+    "DELETE FROM workouts WHERE id = ?",
+    [req.params.id],
+    (err, result) => {
+      if (err) {
+        //sending generic server failures if an error occurs
+        return res.status(500).end();
+      }
+      //if no rows were changed then ID must not exist so sending a 404 - not found
+      if (result.affectedRows === 0) {
+        return res.status(404).end();
+      }
+      res.status(200).end();
     }
   );
 });
